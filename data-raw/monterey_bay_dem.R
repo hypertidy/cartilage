@@ -18,13 +18,23 @@ monterey_dem <- projectRaster(monterey_dem0, target)
 
 
 library(rayshader)
-mdem <- aggregate(monterey_dem, fact = 4) %>%  as.matrix()
+mdem <- aggregate(monterey_dem, fact = 4)
+## can't see what the orientation is yet, rayshader works transpose to raster
+## (image is transposed and flipped rel to raster)
+#a <- matrix(raster::extract(mdem,raster::extent(mdem),buffer=1000),
+#       nrow=ncol(mdem),ncol=nrow(mdem))
+#b <- t(as.matrix(mdem))
+mdem <- t(as.matrix(mdem))
+
+
 #mdem <- as.matrix(monterey_dem)
 sh <- mdem  %>%
-  sphere_shade(texture = "imhof1")
+  sphere_shade(texture = "imhof1") %>%
+  add_shadow(ray_shade(mdem,zscale=200)) %>%
+  add_shadow(ambient_shade(mdem,zscale=200))
 
-## can't see what the orientation is yet, rayshader works in something different
-rgdal::writeGDAL(as(flip(brick(sh * 256), "x"), "SpatialGridDataFrame"), "texture.png", driver = "PNG")
+
+rgdal::writeGDAL(as(brick(sh * 256), "SpatialGridDataFrame"), "texture.png", driver = "PNG")
 qm <- quadmesh::quadmesh(monterey_dem)
 library(rgl)
 
@@ -34,3 +44,5 @@ qm$texcoords <- t(xyFromCell(setExtent(monterey_dem, extent(0, 1, 0, 1)),
                            cellFromXY(monterey_dem, t(qm$vb[1:2, ]))))
 library(rgl)
 shade3d(qm, texture = "texture.png", col = "white")
+aspect3d(1, 1, .2)
+
