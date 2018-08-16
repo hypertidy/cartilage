@@ -33,6 +33,7 @@ sh <- mdem  %>%
   add_shadow(ray_shade(mdem,zscale=200)) %>%
   add_shadow(ambient_shade(mdem,zscale=200))
 
+## run the rayshader plot AFTER the generic one as it modifies the context
 
 rgdal::writeGDAL(as(brick(sh * 256), "SpatialGridDataFrame"), "texture.png", driver = "PNG")
 qm <- quadmesh::quadmesh(monterey_dem)
@@ -43,6 +44,24 @@ library(rgl)
 qm$texcoords <- t(xyFromCell(setExtent(monterey_dem, extent(0, 1, 0, 1)),
                            cellFromXY(monterey_dem, t(qm$vb[1:2, ]))))
 library(rgl)
-shade3d(qm, texture = "texture.png", col = "white")
+
+
+## because we are in real coordinates we can add other objects
+cst <- rnaturalearth::ne_coastline(scale = 10, returnclass = "sf")
+cst_local <- raster::intersect(as(sf::st_transform(cst, raster::projection(monterey_dem)), "Spatial"),
+                  spex::spex(monterey_dem))
+
+#rgl.open()
+shade3d(qm, texture = "texture.png", col = "white", specular = "black")
 aspect3d(1, 1, .2)
+library(anglr)
+plot3d(silicate::SC(cst_local), add = TRUE, size = 5)
+
+#light3d(theta = 0, phi = 30)
+
+## run the rayshader plotting
+rgl.open()
+plot_3d(sh, mdem)
+## remember that rgl.surface is x, z, y
+aspect3d(1, 0.3, 1)
 
