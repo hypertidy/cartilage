@@ -51,11 +51,12 @@ cst <- rnaturalearth::ne_coastline(scale = 10, returnclass = "sf")
 cst_local <- raster::intersect(as(sf::st_transform(cst, raster::projection(monterey_dem)), "Spatial"),
                   spex::spex(monterey_dem))
 
+#rgl.clear()
 #rgl.open()
 shade3d(qm, texture = "texture.png", col = "white", specular = "black")
 aspect3d(1, 1, .2)
 library(anglr)
-plot3d(silicate::SC(cst_local), add = TRUE, size = 5)
+plot3d(silicate::SC(cst_local), add = TRUE, lwd = 7, col = "black")
 
 #light3d(theta = 0, phi = 30)
 
@@ -65,3 +66,14 @@ plot_3d(sh, mdem)
 ## remember that rgl.surface is x, z, y
 aspect3d(1, 0.3, 1)
 
+
+## TODO
+## 1. make a scene with both anglr rayshader DEM
+## 2. add lower region of coastline as triangulated mesh (from a different DEM source?)
+## 3. Add a dismo map (or similar) to the triangulated part of the scene
+
+
+## 4. make a triangulation version of local polyon areas, copy_down from DEM
+
+
+## 5. Emulate coastline addition in rayshader space by converting to matrix coords
