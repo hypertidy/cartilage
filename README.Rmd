@@ -1,0 +1,22 @@
+---
+output: github_document
+---
+
+<!-- README.md is generated from README.Rmd. Please edit that file -->
+
+```{r setup, include = FALSE}
+knitr::opts_chunk$set(
+  collapse = TRUE,
+  comment = "#>",
+  fig.path = "man/figures/README-",
+  out.width = "100%"
+)
+```
+# montereybayshader
+
+The goal of montereybayshader is to blend rayshader image forms with absolute coordinates in rgl. 
+
+
+Monterey Bay in absolute coordinates X, Y, Z (metres) with Natural Earth coastline added (*+proj=lcc +lon_0=-122 +lat_0=36.45 +lat_1=36.7 +lat_2=37.2 +datum=WGS84*). 
+
+![Monterey](data-raw/montereybay_abscoords_LCC.png)

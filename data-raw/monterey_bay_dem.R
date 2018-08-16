@@ -57,7 +57,7 @@ shade3d(qm, texture = "texture.png", col = "white", specular = "black")
 aspect3d(1, 1, .2)
 library(anglr)
 plot3d(silicate::SC(cst_local), add = TRUE, lwd = 7, col = "black")
-
+axes3d()
 #light3d(theta = 0, phi = 30)
 
 ## run the rayshader plotting
