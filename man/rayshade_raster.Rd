@@ -6,6 +6,11 @@
 \usage{
 rayshade_raster(shade, ras)
 }
+\arguments{
+\item{shade}{rayshader array (built from 'ras')}
+
+\item{ras}{input raster}
+}
 \description{
 Rebuild rayshader RGB array to match its input.
 }

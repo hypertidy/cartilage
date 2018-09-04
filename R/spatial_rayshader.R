@@ -1,6 +1,10 @@
 #' Restore rayshader to input array
 #'
 #' Rebuild rayshader RGB array to match its input.
+#'
+#' @param shade rayshader array (built from 'ras')
+#' @param ras input raster
+#' @export
 #' @examples
 #' library(rayshader)
 #' monterey_dem <- raster(system.file("extdata/monterey/monterey_dem.tif", package = "montereybayshader"))
