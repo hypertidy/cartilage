@@ -1,0 +1,25 @@
+## Older discussion: 
+
+Monterey Bay in absolute coordinates X, Y, Z (metres) with Natural Earth coastline added (*+proj=lcc +lon_0=-122 +lat_0=36.45 +lat_1=36.7 +lat_2=37.2 +datum=WGS84*). 
+
+![Monterey](data-raw/montereybay_abscoords_LCC.png)
+
+Here's the same scene using plot_3d and indexing in the NE line in matrix index space. 
+
+
+![Monterey](data-raw/montereybay_relative_coords.png)
+
+
+# notes
+
+Working code example is in /data-raw/monterey_bay_dem.R and will download the file locally into data-raw/. 
+
+Some challenges: 
+
+* rayshader defaults to matrix index space
+* rayshader uses `rgl.surface` with its X-Z-Y convention (affects light3d and aspect3d usage)
+* plot_3d modifies the properties somehow? (I run anglr code before this to avoid)
+* rayshader is t(raster) orientation 
+
+
+Matrix orientation: t(raster) is different from image() as well) though this works with modifying the data further by caputuring the rayshader output with brick() to write to PNG. 
