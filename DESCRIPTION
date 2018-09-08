@@ -1,12 +1,15 @@
-Package: montereybayshader
-Title: What the Package Does (One Line, Title Case)
+Package: cartilage
+Title: Spatializing 'rayshader' 
 Version: 0.0.0.9000
 Authors@R: 
-    person(given = "First",
-           family = "Last",
+    person(given = "Michael",
+           family = "Sumner",
            role = c("aut", "cre"),
-           email = "first.last@example.com")
-Description: What the package does (one paragraph).
-License: What license it uses
+           email = "mdsumner@gmail.com")
+Description: Drive rayshader's image creation within a geospatial context. Input a spatial object
+ (i.e. a raster) and build a record of the input object, the ray-shaded product along with a
+ 3D plot as a side-effect. This simplifies the integration of rayshader products with more 
+ general tasks. 
+License: GPL-3
 Encoding: UTF-8
 LazyData: true

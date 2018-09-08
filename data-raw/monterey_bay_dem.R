@@ -1,4 +1,4 @@
-u <- "https://www.ngdc.noaa.gov/thredds/fileServer/regional/monterey_bay_P080_2018.nc"
+#u <- "https://www.ngdc.noaa.gov/thredds/fileServer/regional/monterey_bay_P080_2018.nc"
 u <- "https://www.ngdc.noaa.gov/thredds/fileServer/regional/monterey_13_mhw_2012.nc"
 f <- here::here("data-raw", basename(u))
 if (!file.exists(f)) curl::curl_download(u, f)
