@@ -6,5 +6,9 @@
 #' @export
 #'
 rayshade_to_hex <- function(x) {
-  rgb(t(x[,,1]), t(x[,,2]), t(x[,,3]))
+  if (length(dim(x)) == 3 ) {
+    rgb(t(x[,,1]), t(x[,,2]), t(x[,,3]))
+  } else {
+    grey(as.vector(x[, ncol(x):1]))
+  }
 }
