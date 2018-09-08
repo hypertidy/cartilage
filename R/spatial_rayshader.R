@@ -40,8 +40,10 @@ plot_hillshade <- function(rr, hs, add = FALSE) {
   # }
   if (!add) rgl::rgl.clear()
 
-  rgl::shade3d(qm, col = rep(rayshade_to_hex(hs), each = 4))
   qm$material$col <- rep(rayshade_to_hex(hs), each = 4)
+  rgl::shade3d(qm)
+ ## rgl::shade3d(qm, col = rep(rayshade_to_hex(hs), each = 4))
+
   rgl::aspect3d(1, 1, .1)
   invisible(list(quadmesh = qm, hillshade = hs, raster = rr))
 
