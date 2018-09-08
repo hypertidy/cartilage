@@ -31,6 +31,13 @@ raster_to_heightmap <- function(x) {
 
 plot_hillshade <- function(rr, hs, add = FALSE) {
   qm <- quadmesh::quadmesh(rr, z = rr)
+  # if (earth) {
+  #   ## convert to geocentric
+  #   xyz <- t(qm$vb[1:3, ])
+  #   xyz[, 3] <- xyz[,3] * earth_exag
+  #   xyz <- proj4::ptransform(xyz[,1:3], raster::projection(rr), "+proj=geocent +ellps=WGS84")
+  #   qm$vb[1:3, ] <- t(xyz)
+  # }
   if (!add) rgl::rgl.clear()
   rgl::shade3d(qm, col = rep(rayshade_to_hex(hs), each = 4))
 
