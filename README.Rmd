@@ -12,10 +12,26 @@ knitr::opts_chunk$set(
   out.width = "100%"
 )
 ```
-# montereybayshader
+# cartilage
 
-The goal of montereybayshader is to blend rayshader image forms with absolute coordinates in rgl. 
+The goal of cartilage is to blend rayshader image forms with absolute coordinates in rgl. 
 
+This is very much a work in progress. See functions `ray` and `ambient`, which expect a raster. Be careful
+not to input very large data (we'll add helpers), keep to something like 300*300 or so unless you keen. The output of functions is the data use to build the scene, but we don't have helpers for those yet.  
+
+
+Install from github with 
+
+```R
+devtools::install_github("hypertidy/cartilage")
+```
+
+Feedback welcome!
+
+
+ Please note that the 'cartilage' project is released with a [Contributor Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project, you agree to abide by its terms.
+
+## Older discussion: 
 
 Monterey Bay in absolute coordinates X, Y, Z (metres) with Natural Earth coastline added (*+proj=lcc +lon_0=-122 +lat_0=36.45 +lat_1=36.7 +lat_2=37.2 +datum=WGS84*). 
 
