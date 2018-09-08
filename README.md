@@ -8,9 +8,13 @@ coordinates in rgl.
 
 This is very much a work in progress. See functions `ray` and `ambient`,
 which expect a raster. Be careful not to input very large data (we’ll
-add helpers), keep to something like 300\*300 or so unless you keen. The
-output of functions is the data use to build the scene, but we don’t
-have helpers for those yet.
+add helpers), and keep dimensions to something like 300\*300 or so
+(unless you keen). A local rgl device is highly recommended, rglwidget
+works fine but doesn’t scale very well.
+
+Feedback welcome\!
+
+## Installation
 
 Install from github with
 
@@ -18,11 +22,32 @@ Install from github with
 devtools::install_github("hypertidy/cartilage")
 ```
 
-Feedback welcome\!
+## Getting raster data …
+
+(… at reasonable resolution)
+
+The ‘raster’ package has a pretty efficient ‘aggregate’ function, and
+‘rgdal’ can read data at lower resolution than native using the
+‘output.dim’ argument of ‘readGDAL’ - the
+[stars](https://github.com/r-spatial/stars.git) project aims to
+supersede both packages and provide the raster sf. Our favourite method
+currently is to use
+[lazyraster](https://github.com/hypertidy/lazyraster.git) which can read
+directly from a file via GDAL into a raster of a desired resolution,
+with helpers for setting an extent prior to reading any data.
+
+The output of cartilage functions is the data used to build the scene,
+but we don’t have helpers for those yet. A related idea is being pursued
+in [SOmap](https://github.com/Maschette/SOmap.git) for Antarctica maps.
 
 Please note that the ‘cartilage’ project is released with a [Contributor
 Code of Conduct](CODE_OF_CONDUCT.md). By contributing to this project,
 you agree to abide by its terms.
+
+‘cartilage’ was originally named ‘montereybayshader’, as it was
+motivated by getting a shareable data set and settled on Monterey Bay.
+The original code was just to plot rayshader products in absolute
+coordinates, or to mesh other products into a rayshader scene.
 
 ## Older discussion:
 
