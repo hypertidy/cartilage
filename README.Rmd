@@ -19,7 +19,9 @@ The goal of cartilage is to blend rayshader image forms with absolute coordinate
 
 This is very much a work in progress. See functions `sphere`, `ray`, `lamb` and `ambient`, which expect a raster and provide the same
 interfaces as the corresponding `rayshader` `*_shade` functions. Be careful
-not to input very large data, keep to something like 300*300 or so unless you outlandishly keen (we'll add helpers). The output of functions is the data use to build the scene, but we don't have helpers for those yet.  
+not to input very large data, keep to something like 300*300 or so unless you outlandishly keen (we'll add helpers). 
+
+The output of functions is the data used to build the scene, and currently includes the `quadmesh`, the `hillshade` and the `raster` -  but we don't have helpers for those yet. An internal function plots and constructs this list output.   
 
 
 
