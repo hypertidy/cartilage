@@ -2,6 +2,10 @@
 
 S3method(ambient,BasicRaster)
 S3method(lamb,BasicRaster)
+S3method(ray,BasicRaster)
+S3method(sphere,BasicRaster)
 export(ambient)
 export(lamb)
+export(ray)
 export(rayshade_to_hex)
+export(sphere)
