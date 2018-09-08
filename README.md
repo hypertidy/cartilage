@@ -6,11 +6,11 @@
 The goal of cartilage is to blend rayshader image forms with absolute
 coordinates in rgl.
 
-This is very much a work in progress. See functions `ray` and `ambient`,
-which expect a raster. Be careful not to input very large data (we’ll
-add helpers), and keep dimensions to something like 300\*300 or so
-(unless you keen). A local rgl device is highly recommended, rglwidget
-works fine but doesn’t scale very well.
+This is very much a work in progress. See functions `lamb` and
+`ambient`, which expect a raster. Be careful not to input very large
+data (we’ll add helpers), and keep dimensions to something like 300\*300
+or so (unless you keen). A local rgl device is highly recommended,
+rglwidget works fine but doesn’t scale very well.
 
 Feedback welcome\!
 
