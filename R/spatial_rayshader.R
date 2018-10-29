@@ -19,7 +19,10 @@
 # hillshade, heightmap:
 # plot_3d
 #
-
+set0 <- function(x) {
+  x[is.na(x)] <- 0
+  x
+}
 
 plot_extra <- function(x, ras) {
 
@@ -39,7 +42,7 @@ plot_hillshade <- function(rr, hs, add = FALSE) {
   #   qm$vb[1:3, ] <- t(xyz)
   # }
   if (!add) rgl::rgl.clear()
-
+  hs <- set0(hs)
   qm$material$col <- rep(rayshade_to_hex(hs), each = 4)
   rgl::shade3d(qm)
  ## rgl::shade3d(qm, col = rep(rayshade_to_hex(hs), each = 4))
@@ -82,7 +85,7 @@ sphere.BasicRaster <- function(x, sunangle = 315, texture = "imhof1", normalvect
                                        normalvectors = normalvectors, zscale = zscale, progbar = progbar, ...)
   print("shading done!")
 
-  ##  hillshade <- set0(hillshade)
+
   plot_hillshade(x, hillshade, add = add)
 }
 #' @export
@@ -98,7 +101,7 @@ ray.BasicRaster <- function(x, anglebreaks = seq(40, 50, 1), sunangle = 315,
                                     progbar = progbar, ...)
   print("shading done!")
 
-##  hillshade <- set0(hillshade)
+
   plot_hillshade(x, hillshade, add = add)
 }
 
@@ -111,11 +114,7 @@ lamb.BasicRaster <- function(x, rayangle = 45, sunangle = 315, zscale = 1,
   hillshade <- rayshader::lamb_shade(hm, rayangle = rayangle, sunangle = sunangle, zscale = zscale,
                                      zero_negative = zero_negative, ...)
   print("shading done!")
-  set0 <- function(x) {
-    x[is.na(x)] <- 0
-    x
-  }
-  hillshade <- set0(hillshade)
+
  plot_hillshade(x, hillshade, add = add)
 }
 #' @export
