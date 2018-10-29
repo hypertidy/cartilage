@@ -46,7 +46,7 @@ f <- system.file("extdata/monterey/monterey_dem.tif", package= "cartilage")
 
 r <- raster::raster(f)
 ## reduce the resolution a lot (if you want)
-r <- raster::aggregate(r, fact = 6)
+#r <- raster::aggregate(r, fact = 6)
 
 library(cartilage)
 x <- sphere(r)
