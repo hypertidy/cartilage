@@ -15,7 +15,7 @@ Encoding: UTF-8
 LazyData: true
 RoxygenNote: 6.1.0
 Imports: 
-    rayshader (>=  0.6.3),
+    rayshader (>= 0.6.3),
     raster,
-    rgl
-
+    rgl,
+    grDevices
